@@ -8,11 +8,13 @@ var Iteration = React.createClass({
   render() {
     console.log(this.state.array);
     // 暂时先不考虑 error
-    this.state.array.map(function(value) {
+    const x = this.state.array.map(function(value) {
       return (
         <span>{value}</span>
       )
     });
+    console.log(x);
+    return x[0];
   }
 });
 
