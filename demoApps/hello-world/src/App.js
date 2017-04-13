@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { Button } from 'zent';
+// import DAlert from './demo/DAlert';
+// import DBreadcrumb from './demo/DBreadcrumb';
+// import DButton from './demo/DButton';
+import Simple from './demo/checkbox/readonly';
 
-// import 'zent/assets/index.scss';
-import 'zent/lib/index.css';
 
 
 class App extends Component {
@@ -19,7 +20,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Button>Zent</Button>
+
+        <Simple />
       </div>
     );
   }
