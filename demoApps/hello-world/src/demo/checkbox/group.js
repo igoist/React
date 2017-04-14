@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Checkbox from './src/Checkbox';
-import Group from './src/Group';
+import Checkbox from './src';
 
-const CheckboxGroup = Group;
+const CheckboxGroup = Checkbox.Group;
 
 import 'zent/lib/index.css';
 /*

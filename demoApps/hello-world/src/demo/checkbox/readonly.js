@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Checkbox from './src/Checkbox';
+import Checkbox from './src';
 
 import 'zent/lib/index.css';
 /*
