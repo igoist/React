@@ -1,0 +1,39 @@
+.zent-datetime-picker {
+  /* HTML5 display-role reset for older browsers */ }
+  .zent-datetime-picker html, .zent-datetime-picker body, .zent-datetime-picker div, .zent-datetime-picker span, .zent-datetime-picker applet, .zent-datetime-picker object, .zent-datetime-picker iframe,
+  .zent-datetime-picker h1, .zent-datetime-picker h2, .zent-datetime-picker h3, .zent-datetime-picker h4, .zent-datetime-picker h5, .zent-datetime-picker h6, .zent-datetime-picker p, .zent-datetime-picker blockquote, .zent-datetime-picker pre,
+  .zent-datetime-picker a, .zent-datetime-picker abbr, .zent-datetime-picker acronym, .zent-datetime-picker address, .zent-datetime-picker big, .zent-datetime-picker cite, .zent-datetime-picker code,
+  .zent-datetime-picker del, .zent-datetime-picker dfn, .zent-datetime-picker em, .zent-datetime-picker img, .zent-datetime-picker ins, .zent-datetime-picker kbd, .zent-datetime-picker q, .zent-datetime-picker s, .zent-datetime-picker samp,
+  .zent-datetime-picker small, .zent-datetime-picker strike, .zent-datetime-picker strong, .zent-datetime-picker sub, .zent-datetime-picker sup, .zent-datetime-picker tt, .zent-datetime-picker var,
+  .zent-datetime-picker b, .zent-datetime-picker u, .zent-datetime-picker i, .zent-datetime-picker center,
+  .zent-datetime-picker dl, .zent-datetime-picker dt, .zent-datetime-picker dd, .zent-datetime-picker ol, .zent-datetime-picker ul, .zent-datetime-picker li,
+  .zent-datetime-picker fieldset, .zent-datetime-picker form, .zent-datetime-picker label, .zent-datetime-picker legend,
+  .zent-datetime-picker table, .zent-datetime-picker caption, .zent-datetime-picker tbody, .zent-datetime-picker tfoot, .zent-datetime-picker thead, .zent-datetime-picker tr, .zent-datetime-picker th, .zent-datetime-picker td,
+  .zent-datetime-picker article, .zent-datetime-picker aside, .zent-datetime-picker canvas, .zent-datetime-picker details, .zent-datetime-picker embed,
+  .zent-datetime-picker figure, .zent-datetime-picker figcaption, .zent-datetime-picker footer, .zent-datetime-picker header, .zent-datetime-picker hgroup,
+  .zent-datetime-picker menu, .zent-datetime-picker nav, .zent-datetime-picker output, .zent-datetime-picker ruby, .zent-datetime-picker section, .zent-datetime-picker summary,
+  .zent-datetime-picker time, .zent-datetime-picker mark, .zent-datetime-picker audio, .zent-datetime-picker video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline; }
+  .zent-datetime-picker article, .zent-datetime-picker aside, .zent-datetime-picker details, .zent-datetime-picker figcaption, .zent-datetime-picker figure,
+  .zent-datetime-picker footer, .zent-datetime-picker header, .zent-datetime-picker hgroup, .zent-datetime-picker menu, .zent-datetime-picker nav, .zent-datetime-picker section {
+    display: block; }
+  .zent-datetime-picker body {
+    line-height: 1; }
+  .zent-datetime-picker ol, .zent-datetime-picker ul {
+    list-style: none; }
+  .zent-datetime-picker blockquote, .zent-datetime-picker q {
+    quotes: none; }
+  .zent-datetime-picker blockquote:before, .zent-datetime-picker blockquote:after,
+  .zent-datetime-picker q:before, .zent-datetime-picker q:after {
+    content: '';
+    content: none; }
+  .zent-datetime-picker table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+
+/*# sourceMappingURL=reset.css.map */
