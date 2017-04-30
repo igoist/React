@@ -34,12 +34,12 @@ console.log("Here!!");
 class Clock extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {date: new Date()};
-    this.state.counter = 0;
+    this.state = {date: new Date(), counter: 3};
+    // this.state.counter = 0;
     console.log("this.props: " + this.props);
     console.log("props: " + props);
     console.log("props.inc: " + props.inc);
-
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -70,12 +70,16 @@ class Clock extends React.Component {
 
   }
 
+  handleClick(e) {
+    console.log(e.target.value);
+    this.setState({counter: 0});
+  }
 
   render() {
     return (
       <div>
         <h1>Hello World!</h1>
-        <h2>{this.state.counter}: It is {this.state.date.toLocaleTimeString()} !</h2>
+        <h2 onClick={this.handleClick}>{this.state.counter}: It is {this.state.date.toLocaleTimeString()} !</h2>
       </div>
     );
   }
@@ -89,6 +93,10 @@ function FormattedDate(props) {
 
 
 ReactDOM.render(
-  <Clock inc={1} />,
+  (<div>
+    <Clock inc={1} />
+    <Clock inc={2} />
+    <Clock inc={3} />
+  </div>),
   document.getElementById('example3')
 );
