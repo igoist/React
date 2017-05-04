@@ -95,7 +95,7 @@ class SignUpDialog extends React.Component {
 }
 
 
-// ReactDOM.render(
-//   <SignUpDialog />,
-//   document.getElementById("example2")
-// );
+ReactDOM.render(
+  <SignUpDialog />,
+  document.getElementById("example2")
+);

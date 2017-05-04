@@ -1,0 +1,32 @@
+body {
+  background: #bbb;
+}
+
+#search-bar {
+  padding: 8px 8px;
+  border: 2px solid #22e;
+}
+
+.pcr {
+  margin: 2px 2px;
+  padding: 6px 6px;
+  border: 2px solid #2dd;
+}
+
+.pr {
+  margin: 2px 2px;
+  padding: 4px 4px;
+  border: 2px solid #f12;
+}
+
+#pt {
+  margin: 2px auto;
+  padding: 8px 8px;
+  border: 2px solid #2e2;
+}
+
+#ftp {
+  margin: 2px 4px;
+  padding: 8px 8px;
+  border: 2px solid #db3;
+}
