@@ -8,9 +8,11 @@ import './App.css';
 // import Simple from './demo/checkbox/readonly';
 // import Simple from './demo/datetimepicker/examples/datePicker';
 // import Simple from './demo/datetimepicker/examples/monthPicker';
-import Simple from './demo/datetimepicker/examples/rangePicker';
+// import Simple from './demo/datetimepicker/examples/rangePicker';
+// import Simple from './demo/dialog/examples/footer';
+import Simple from './demo/dialog/examples/open';
 
-
+// import Apt from './toggle-panel';
 
 class App extends Component {
   render() {
@@ -21,7 +23,7 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Just on the way -- <code>src/App.js</code>.
         </p>
 
         <Simple />
