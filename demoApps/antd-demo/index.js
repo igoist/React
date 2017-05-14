@@ -6,9 +6,9 @@ import { Select } from 'antd';
 
 const Option = Select.Option;
 
-// function handleChange(value) {
-//   console.log(`selected ${value}`);
-// }
+import { Layout } from 'antd';
+
+const { Header, Footer, Sider, Content } = Layout;
 
 
 class SelectBar extends React.Component {
@@ -20,7 +20,6 @@ class SelectBar extends React.Component {
     this.props.items.forEach((item, index) => {
       this.op2.push(<Option key={index.toString()} value={item.v}>{item.v}</Option>);
     });
-    this.op1.push(<Option key={''} value='' disabled>请选择产品</Option>);
 
     this.handleProductChange = this.handleProductChange.bind(this);
     this.handleViewChange = this.handleViewChange.bind(this);
@@ -37,9 +36,11 @@ class SelectBar extends React.Component {
   render() {
     this.props.items.forEach((item, index1) => {
       if (this.props.v2 == '') {
+        this.op1.push(<Option key={''} value='' disabled>请选择产品</Option>);
       } else {
         if (item.v == this.props.v2) {
           this.op1 = [];
+          this.op1.push(<Option key={''} value='' disabled>请选择产品</Option>);
           item.products.forEach((p, index2) => {
             this.op1.push(<Option key={index2.toString()} value={p.p}>{p.p}</Option>);
           });
@@ -48,10 +49,10 @@ class SelectBar extends React.Component {
     });
     return(
       <div>
-        <Select defaultValue='' onChange={this.handleViewChange}>
+        <Select value={this.props.v2} onChange={this.handleViewChange} style={{width: '120px', padding: '10px 12px'}}>
           {this.op2}
         </Select>
-        <Select defaultValue='' onChange={this.handleProductChange}>
+        <Select value={this.props.v1} onChange={this.handleProductChange} style={{width: '120px', padding: '10px 12px', paddingLeft: '0'}}>
           {this.op1}
         </Select>
       </div>
@@ -113,12 +114,7 @@ class Items extends React.Component {
 
     return (
       <div>
-        <div id='sel-wrap'>
-          <select name='view' value={this.props.v2} onChange={this.handleViewChange}>{this.op2}</select>
-          <select name='product' value={this.props.v1} onChange={this.handleProductChange}>{this.op1}</select>
-        </div>
         <div id='items-wrap'>
-
           <ul className='items'>
             {rows}
           </ul>
@@ -129,8 +125,9 @@ class Items extends React.Component {
 }
 
 function adjustHeight(iHeight, length) {
-  const sel = document.getElementById('sel-wrap');
-  let tmp = sel.offsetHeight + iHeight * length;
+  // const sel = document.getElementById('sel-wrap');
+  // let tmp = sel.offsetHeight + iHeight * length;
+  let tmp = iHeight * length;
   let todo = document.querySelector('.card');
   todo.style.height = tmp + 'px';
 }
@@ -183,28 +180,11 @@ class ProductAndView extends React.Component {
 
     this.iHeight = 32 + 1;
 
-    // this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTextInputChange = this.handleTextInputChange.bind(this);
     this.handleProductChange = this.handleProductChange.bind(this);
     this.handleViewChange = this.handleViewChange.bind(this);
     this.handleItemClick = this.handleItemClick.bind(this);
   }
-
-  // handleSubmit(text) {
-  //   this.items.push({text: text, done: false});
-  //   this.setState({
-  //     count: this.items.length
-  //   });
-  //
-  //   // console.log(this.items.length);
-  //
-  //   const sb = document.getElementById('search-bar');
-  //   console.log(sb.offsetHeight);
-  //   let tmp = sb.offsetHeight + this.iHeight * this.items.length;
-  //   let todo = document.querySelector('.card');
-  //   todo.style.height = tmp + 'px';
-  //   console.log(this);
-  // }
 
   handleTextInputChange(text) {
     this.setState({
@@ -227,7 +207,7 @@ class ProductAndView extends React.Component {
     });
     let length = 0;
     this.items.forEach((item, index1) => {
-      console.log(item.v);
+      // console.log(item.v);
       if (item.v == text) {
         length = item.products.length;
       }
@@ -245,7 +225,7 @@ class ProductAndView extends React.Component {
   // <SearchBar onSubmit={this.handleSubmit} onChange={this.handleTextInputChange} />
   render() {
     return (
-      <div id='todo-wrap'>
+      <div id='qr-wrap'>
         <SelectBar
           items={this.items}
           v1={this.state.v1}
@@ -270,12 +250,95 @@ class ProductAndView extends React.Component {
   }
 }
 
-function App() {
-  return (
-    <div style={{ margin: 100 }}>
-      <ProductAndView />
-    </div>
-  );
+import { Menu, Icon, Switch } from 'antd';
+const SubMenu = Menu.SubMenu;
+const MenuItemGroup = Menu.ItemGroup;
+
+class App extends React.Component {
+  state = {
+    theme: 'dark',
+    current: '1',
+  }
+  changeTheme = (value) => {
+    this.setState({
+      theme: value ? 'dark' : 'light',
+    });
+  }
+  handleClick = (e) => {
+    console.log('click ', e);
+    this.setState({
+      current: e.key,
+    });
+  }
+  render() {
+    return (
+      <Layout>
+        <Header id='qr-header' className='et-header'>
+          <Menu
+            onClick={this.handleClick}
+            selectedKeys={[this.state.current]}
+            mode="horizontal"
+            style={{padding: '8px 12px'}}
+          >
+            <Menu.Item key="mail">
+              <Icon type="mail" />Navigation One
+            </Menu.Item>
+            <Menu.Item key="app">
+              <Icon type="appstore" />Navigation Two
+            </Menu.Item>
+
+          </Menu>
+        </Header>
+        <Layout>
+          <Sider id='qr-sider' style={{paddingTop: '20px'}}>
+            <Switch
+              checked={this.state.theme === 'dark'}
+              onChange={this.changeTheme}
+              checkedChildren="Dark"
+              unCheckedChildren="Light"
+              style={{marginLeft: '16px'}}
+            />
+            <br />
+            <br />
+            <Menu
+              theme={this.state.theme}
+              onClick={this.handleClick}
+              style={{ width: 200 }}
+              defaultOpenKeys={['sub1']}
+              selectedKeys={[this.state.current]}
+              mode="inline"
+            >
+              <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
+                <Menu.Item key="1">Option 1</Menu.Item>
+                <Menu.Item key="2">Option 2</Menu.Item>
+                <Menu.Item key="3">Option 3</Menu.Item>
+                <Menu.Item key="4">Option 4</Menu.Item>
+              </SubMenu>
+              <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>Navigtion Two</span></span>}>
+                <Menu.Item key="5">Option 5</Menu.Item>
+                <Menu.Item key="6">Option 6</Menu.Item>
+                <SubMenu key="sub3" title="Submenu">
+                  <Menu.Item key="7">Option 7</Menu.Item>
+                  <Menu.Item key="8">Option 8</Menu.Item>
+                </SubMenu>
+              </SubMenu>
+              <SubMenu key="sub4" title={<span><Icon type="setting" /><span>Navigation Three</span></span>}>
+                <Menu.Item key="9">Option 9</Menu.Item>
+                <Menu.Item key="10">Option 10</Menu.Item>
+                <Menu.Item key="11">Option 11</Menu.Item>
+                <Menu.Item key="12">Option 12</Menu.Item>
+              </SubMenu>
+            </Menu>
+          </Sider>
+          <Content style={{height: '600px'}}>
+            <ProductAndView />
+          </Content>
+          <Sider>right sidebar</Sider>
+        </Layout>
+        <Footer>Footer</Footer>
+      </Layout>
+    );
+  }
 }
 
 ReactDOM.render(
@@ -283,9 +346,10 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-const sel = document.getElementById('sel-wrap');
+// const sel = document.getElementById('sel-wrap');
 const ul = document.getElementById('items-wrap');
-const tmp = sel.offsetHeight + ul.offsetHeight;
+// const tmp = sel.offsetHeight + ul.offsetHeight;
+const tmp = ul.offsetHeight;
 let todo = document.querySelector('.card');
 todo.style.height = tmp + 'px';
 todo = null;
