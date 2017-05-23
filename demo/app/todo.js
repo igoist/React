@@ -2,7 +2,7 @@ class EnterBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'Enter something...'
+      value: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,14 +25,11 @@ class EnterBar extends React.Component {
     return (
       <div id='search-bar'>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Cot:
-            <input type='text' name='it' value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
+          <input id='input' type='text' name='it' value={this.state.value} placeholder={'Enter something...'} onChange={this.handleChange} style={{border: 'none', userSelect: 'none'}} />
         </form>
       </div>
     );
+    // <input type="submit" value="Submit" />
   }
 }
 
@@ -59,9 +56,9 @@ class Items extends React.Component {
     var rows = [];
     this.props.items.forEach((item, index) => {
       if(item.done) {
-        rows.push(<li className='item done' key={index.toString()} id={index} onClick={this.props.handleItemClick}>{item.text}</li>);
+        rows.push(<li className='item done' key={index.toString()} id={index} onClick={this.props.handleItemClick}><span></span><p>{item.text}</p></li>);
       } else {
-        rows.push(<li className='item' key={index.toString()} id={index} onClick={this.props.handleItemClick}>{item.text}</li>);
+        rows.push(<li className='item' key={index.toString()} id={index} onClick={this.props.handleItemClick}><span></span>{item.text}</li>);
       }
     });
     return (
@@ -85,7 +82,7 @@ class Todo extends React.Component {
       clickFlag: false,
       count: this.items.length
     };
-    this.iHeight = 32 + 1;
+    this.iHeight = 72 + 1;
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleItemClick = this.handleItemClick.bind(this);
@@ -118,6 +115,7 @@ class Todo extends React.Component {
   render() {
     return (
       <div id='todo-wrap'>
+        <h1 id='header'>todo</h1>
         <div className='card'>
           <EnterBar onSubmit={this.handleSubmit} onChange={this.handleTextInputChange} />
           <Items items={this.items} handleItemClick={this.handleItemClick} />

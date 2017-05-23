@@ -1,17 +1,50 @@
+@font-face {
+  font-family: 'profile';
+  src: url("../font/font-awesome/fonts/fontawesome-webfont.eot");
+  src: url("../font/font-awesome/fonts/FontAwesome.otf") format('embedded-opentype'),
+       url("../font/font-awesome/fonts/fontawesome-webfont.woff") format('woff'),
+       url("../font/font-awesome/fonts/fontawesome-webfont.ttf") format('truetype'),
+       url("../font/font-awesome/fonts/fontawesome-webfont.svg") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'profile';
+}
+
 #todo-wrap {
   position: absolute;
-  top: 20%;
+  top: 0%;
   left: 30%;
 }
 
+#header {
+  width: 400px;
+  font-size: 80px;
+  color: #f85e63;
+  font-weight: 100;
+  text-align: center;
+}
+
 #search-bar {
-  padding-left: 20px;
-  height: 40px;
-  line-height: 40px;
+  padding-left: 58px;
+  height: 72px;
+  line-height: 72px;
   margin-bottom: 0;
   padding-bottom: 0;
   border-bottom: 1px solid #aaa;
 }
+
+#input {
+  outline: none;
+  height: 70px;
+  line-height: 70px;
+  font-size: 28px;
+  color: #666;
+}
+
+#input::-webkit-input-placeholder { color:#ccc; }
 
 .items {
   margin: 0;
@@ -20,18 +53,48 @@
 
 .item {
   margin-top: 0;
-  height: 32px;
-  line-height: 32px;
+  height: 72px;
+  line-height: 72px;
   border-bottom: 1px solid #aaa;
   list-style: none;
-  padding-left: 32px;
+  padding-left: 16px;
+  font-size: 28px;
 }
 
 .item:last-child {
   border-bottom: none;
 }
 
-.done {
+.item > span {
+  float: left;
+  text-decoration: none;
+  /*width: 26px;
+  height: 26px;*/
+  margin-right: 16px;
+  border-radius: 16px;
+  /*border: 1px solid #666;*/
+}
+
+.item > span:before {
+
+  box-sizing: border-box;
+  /*padding: 3px 3px;*/
+  width: 32px;
+  height: 32px;
+  font-family: "profile";
+  content: '\f00c';
+  opacity: 0;
+  color: #4CAF50;
+}
+
+.done > span:before {
+  text-decoration: none;
+  opacity: 1;
+}
+
+.done > p {
+  margin: 0;
+  float: left;
   text-decoration: line-through;
   /*color*/
   /*opacity: 0.6;*/
