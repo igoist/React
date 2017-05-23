@@ -25,6 +25,7 @@ class EnterBar extends React.Component {
     return (
       <div id='search-bar'>
         <form onSubmit={this.handleSubmit}>
+          <span id='input-prefix'><i className='prefix-icon'></i></span>
           <input id='input' type='text' name='it' value={this.state.value} placeholder={'Enter something...'} onChange={this.handleChange} style={{border: 'none', userSelect: 'none'}} />
         </form>
       </div>
@@ -88,6 +89,17 @@ class Todo extends React.Component {
     this.handleItemClick = this.handleItemClick.bind(this);
   }
 
+  componentDidMount() {
+    // console.log(document.getElementById('todo-wrap'));
+    const sb = document.getElementById('search-bar');
+    const ul = document.getElementById('items-wrap');
+    console.log(sb.offsetHeight);
+    const tmp = sb.offsetHeight + ul.offsetHeight;
+    let todo = document.querySelector('.card');
+    todo.style.height = tmp + 'px';
+    todo = null;
+  }
+
   handleSubmit(text) {
     this.items.push({text: text, done: false});
     this.setState({
@@ -130,12 +142,3 @@ ReactDOM.render(
   <Todo />,
   document.getElementById('example')
 );
-
-// console.log(document.getElementById('todo-wrap'));
-const sb = document.getElementById('search-bar');
-const ul = document.getElementById('items-wrap');
-console.log(sb.offsetHeight);
-const tmp = sb.offsetHeight + ul.offsetHeight;
-let todo = document.querySelector('.card');
-todo.style.height = tmp + 'px';
-todo = null;
