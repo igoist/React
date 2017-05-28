@@ -9523,7 +9523,6 @@ module.exports = getIteratorFn;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Todo = Todo;
 exports.TodoList = TodoList;
 
 var _react = __webpack_require__(50);
@@ -9550,8 +9549,35 @@ function Todo(props) {
   }
 }
 
+// class TodoList extends React.Components {
+//   constructor(props) {
+//     super(props);
+//     this.todos = props.todos;
+//     // console.log(this.todos);
+//     // console.log(typeof this.todos);
+//   }
+//
+//   render() {
+//     return (
+//       <div className='todo'>
+//         <input type='text' placeholder='Add todo' />
+//         <ul className='todo__list'>
+//           {
+//             this.todos.map(t => (
+//               <li key={t.id} className='todo__item'>
+//                 <Todo todo={t} />
+//               </li>
+//             ))
+//           }
+//         </ul>
+//       </div>
+//     );
+//   }
+// }
+//
+// export default TodoList;
 function TodoList(props) {
-  var todo = props.todo;
+  var todos = props.todos;
 
   return _react2.default.createElement(
     'div',
