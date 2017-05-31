@@ -36,6 +36,12 @@ class Router {
     const view = new routes[path]()
     // 调用页面方法, 把页面加载到document.body中
     view.mount(document.body)
+    // import('./views' + path + '/index.js').then(module => {
+    //   // export default ... 的内容通过module.default访问
+    //   const View = module.default
+    //   const view = new View()
+    //   view.mount(document.body)
+    // })
   }
 }
 
