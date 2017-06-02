@@ -16,14 +16,15 @@ import * as CounterActions from './actions/CounterActions';
 
 class Counter extends Component {
   render() {
-    console.log(this.props);
-    const { value, actions } = this.props;
+    // console.log(this.props);
+    const { counter, actions } = this.props;
+    // console.log(counter);
     // console.log(inc);
     // console.log(this.inc);
 
     return (
       <div>
-        { value }
+        {counter[0].value}
         <button onClick={() => actions.inc()}> + </button>
         <button onClick={() => actions.dec()}> - </button>
       </div>
@@ -32,8 +33,9 @@ class Counter extends Component {
 }
 
 function mapState(state) {
+  console.log(state);
   return {
-    value: state.value
+    counter: state.counter
   };
 }
 

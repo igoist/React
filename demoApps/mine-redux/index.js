@@ -9,7 +9,9 @@ const store = configureStore();
 
 class App extends React.Component {
 
+
   render() {
+    console.log(store);
     return (
       <Provider store={ store }>
         <div>

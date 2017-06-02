@@ -11,7 +11,7 @@ const enhancer = compose(
     )
   )
 );
-
+ // = [{counter: {value: 10}}]
 export default function configureStore(initialState) {
   const store = createStore(rootReducer, initialState, enhancer);
 
