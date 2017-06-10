@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import { DatePicker } from 'antd';
-import { Select } from 'antd';
-
+import { Table, Select } from 'antd';
 const Option = Select.Option;
 
 import { Layout } from 'antd';
@@ -64,33 +63,11 @@ class SelectBar extends React.Component {
 class Items extends React.Component {
   constructor(props) {
     super(props);
-    this.op1 = []; // product
-    this.op2 = []; // view
-    this.op2.push(<option key={''} disabled value=''>请选择视图</option>);
-    this.op1.push(<option key={''} disabled value=''>请选择产品</option>);
-    this.props.items.forEach((item, index) => {
-      this.op2.push(<option key={index.toString()} value={item.v}>{item.v}</option>);
-    });
-
-    this.handleProductChange = this.handleProductChange.bind(this);
-    this.handleViewChange = this.handleViewChange.bind(this);
-    this.handleItemClick = this.handleItemClick.bind(this);
-  }
-
-  handleProductChange(e) {
-    this.props.handleProductChange(e.target.value);
-  }
-
-  handleViewChange(e) {
-    this.props.handleViewChange(e.target.value);
-  }
-
-  handleItemClick(e) {
-    this.props.handleItemClick(e);
   }
 
   render() {
     var rows = [];
+    rows.push(<li className='item-h' key={''}><span>视图</span><span>产品</span><span>信息</span></li>);
     this.props.items.forEach((item, index1) => {
       if (this.props.v2 == '') {
         item.products.forEach((p, index2) => {
@@ -98,10 +75,7 @@ class Items extends React.Component {
         });
       } else {
         if (item.v == this.props.v2) {
-          // console.log(item.products);
-          this.op1 = [];
           item.products.forEach((p, index2) => {
-            this.op1.push(<option key={index2.toString()} value={p.p}>{p.p}</option>);
             if (this.props.v1 == '') {
               rows.push(<li className='item' key={index1.toString() + '-' + index2.toString()}><span>{item.v}</span><span>{p.p}</span><span>{p.info}</span></li>);
             } else if (p.p == this.props.v1) {
@@ -137,8 +111,10 @@ class ProductAndView extends React.Component {
     super(props);
     this.items = [];
     try {
+      let ip = '192.168.1.107';
+      // let ip = '127.0.0.1';
       let xhr = new XMLHttpRequest();
-      xhr.open('get', 'http://127.0.0.1:8000/qrcode/api/', false);
+      xhr.open('get', 'http://' + ip + ':8000/qrcode/api/', false);
       xhr.send(null);
       let listObj = JSON.parse(xhr.responseText);
       console.log(listObj);
@@ -233,16 +209,12 @@ class ProductAndView extends React.Component {
           handleProductChange={this.handleProductChange}
           handleViewChange={this.handleViewChange}
         />
-        <hr />
+        <br />
         <div className='card'>
-
           <Items
             items={this.items}
             v1={this.state.v1}
             v2={this.state.v2}
-            handleItemClick={this.handleItemClick}
-            handleProductChange={this.handleProductChange}
-            handleViewChange={this.handleViewChange}
           />
         </div>
       </div>
@@ -273,7 +245,7 @@ class App extends React.Component {
   render() {
     return (
       <Layout>
-        <Header id='qr-header' className='et-header'>
+        <Header id='qr-header' className='et-header' style={{height: '56px'}}>
           <Menu
             onClick={this.handleClick}
             selectedKeys={[this.state.current]}
@@ -286,7 +258,15 @@ class App extends React.Component {
             <Menu.Item key="app">
               <Icon type="appstore" />Navigation Two
             </Menu.Item>
-
+            <Menu.Item key="a">
+              <Icon type="appstore" />Navigation Three
+            </Menu.Item>
+            <Menu.Item key="b">
+              <Icon type="appstore" />Navigation Four
+            </Menu.Item>
+            <Menu.Item key="c">
+              <Icon type="appstore" />Navigation Five
+            </Menu.Item>
           </Menu>
         </Header>
         <Layout>
@@ -333,7 +313,6 @@ class App extends React.Component {
           <Content style={{height: '600px'}}>
             <ProductAndView />
           </Content>
-          <Sider>right sidebar</Sider>
         </Layout>
         <Footer>Footer</Footer>
       </Layout>

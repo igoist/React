@@ -46,6 +46,14 @@
 
 #input::-webkit-input-placeholder { color:#ccc; }
 
+#input-prefix {
+
+}
+
+.prefix-icon:before {
+
+}
+
 .items {
   margin: 0;
   padding-left: 0;
@@ -76,9 +84,7 @@
 }
 
 .item > span:before {
-
   box-sizing: border-box;
-  /*padding: 3px 3px;*/
   width: 32px;
   height: 32px;
   font-family: "profile";
@@ -96,8 +102,6 @@
   margin: 0;
   float: left;
   text-decoration: line-through;
-  /*color*/
-  /*opacity: 0.6;*/
   color: #666;
 }
 
