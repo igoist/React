@@ -10,7 +10,6 @@ $row: 3;
   width: ($chessSize + $chessWrap * 2) * $row;
 }
 
-
 .chess {
   position: relative;
   margin: 6px;
@@ -18,12 +17,17 @@ $row: 3;
   width: $chessSize;
   height: $chessSize;
   background: #333;
-  &.flag:after {
+  // transition: all 0.3s ease-in-out;
+  &:after {
     content: '';
     position: absolute;
     width: $chessSize;
     height: $chessSize;
-    background: #fff;
+    background: #333;
     border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+  }
+  &.flag:after {
+    background: #fff;
   }
 }
