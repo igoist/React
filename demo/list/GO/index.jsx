@@ -3,12 +3,14 @@ const t = (x) => Math.floor((x * Math.random()))
 const boxSize = rows * (32 + 6 * 2)
 
 // var arr = [0, 1, 1, 1, 0, 1, 1, 1, 0]
-let arr = (rows) => {
+let arr = ((rows) => {
   let arr = []
   for (let i = 0; i < rows * rows; i++) {
     arr.push(t(100) % 2)
   }
-}
+  console.log(arr)
+  return arr
+})(rows)
 
 console.log('finish arr initial: ' + arr)
 

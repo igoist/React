@@ -1,33 +1,45 @@
 $chessSize: 32px;
 $chessWrap: 6px;
 $row: 3;
+$chessBoardBgColor: #f7c08a;
+$chessBoardLineColor: #333;
+$chessBoardHalfLine: 6px;
+$chessMargin: 2px;
 
+body {
+  background: $chessBoardBgColor;
+}
 
 #board {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: ($chessSize + $chessWrap * 2) * $row;
+  border: $chessBoardHalfLine solid #333;
 }
 
 .chess {
   position: relative;
-  margin: 6px;
+  // margin: $chessBoardHalfLine;
   flex-shrink: 0;
   width: $chessSize;
   height: $chessSize;
-  background: #333;
+  background: #fff;
+  border: $chessBoardHalfLine solid $chessBoardLineColor;
   // transition: all 0.3s ease-in-out;
   &:after {
     content: '';
     position: absolute;
-    width: $chessSize;
-    height: $chessSize;
-    background: #333;
+    margin: $chessMargin;
+    width: $chessSize - $chessMargin * 2;
+    height: $chessSize - $chessMargin * 2;
+    background: #fff;
+    border: 1px solid $chessBoardLineColor;
     border-radius: 50%;
     transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
   }
   &.flag:after {
-    background: #fff;
+    background: $chessBoardLineColor;
   }
 }
