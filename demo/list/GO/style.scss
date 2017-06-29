@@ -1,0 +1,29 @@
+$chessSize: 32px;
+$chessWrap: 6px;
+$row: 3;
+
+
+#board {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: ($chessSize + $chessWrap * 2) * $row;
+}
+
+
+.chess {
+  position: relative;
+  margin: 6px;
+  flex-shrink: 0;
+  width: $chessSize;
+  height: $chessSize;
+  background: #333;
+  &.flag:after {
+    content: '';
+    position: absolute;
+    width: $chessSize;
+    height: $chessSize;
+    background: #fff;
+    border-radius: 50%;
+  }
+}
